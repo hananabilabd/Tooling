@@ -1,0 +1,14 @@
+ Volume in drive F is Miscellaneous
+ Volume Serial Number is 000B-48AE
+
+ Directory of F:\ITI\Tooling
+
+14-12-2018  03:06 PM    <DIR>          .
+14-12-2018  03:06 PM    <DIR>          ..
+14-12-2018  02:08 PM    <DIR>          EclipseWorkspace
+14-12-2018  03:06 PM               491 h.txt
+14-12-2018  03:05 PM                37 ITI.bat
+14-12-2018  03:06 PM                 0 k.txt
+13-12-2018  10:15 PM    <DIR>          Lectures
+               3 File(s)            528 bytes
+               4 Dir(s)  34,473,971,712 bytes free
