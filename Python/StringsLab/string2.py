@@ -63,6 +63,10 @@ def minipulateString(command,delim,s):
 # Else return "This is a string"
 def isunicode(s):
   # +++your code here+++
+  if isinstance(s, unicode):
+    return 'This is a unicode string'
+  elif isinstance(s, str):
+    return 'This is a string'
   return  
   
 
