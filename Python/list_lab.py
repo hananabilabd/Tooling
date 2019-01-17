@@ -74,12 +74,6 @@ def test(got, expected):
     prefix = '  X '
   print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
 
-def lol():
-	l = ['hello','hanna','lol','zz','l']
-	count=0
-	for i in l:
-		print(l.index(i))
-		
 # Calls the above functions with interesting inputs.
 def main():
   print 'match_ends'
