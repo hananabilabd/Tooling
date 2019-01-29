@@ -16,9 +16,7 @@
 # Hint: use key= in sorted.
 def sort_sum(tuples):  
   # +++your code here+++
-   #[sum(tup) for tup in tuples]
-  result=sorted(tuples,key=sum,reverse=True)
-  return result
+  return sorted(tuples,key=sum,reverse=True)
     
 # even_tuple
 # Given a tuple, return a tuple whose values are the even numbers of 
