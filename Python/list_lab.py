@@ -55,6 +55,7 @@ def front_x(words):
 def remove_adjacent(nums):
  
   for i in nums:
+	
 	#occurrence = [ index for index in range (0,len(nums)) if nums[index] == i]
 	
 	try:
@@ -62,9 +63,9 @@ def remove_adjacent(nums):
 			nums.pop(nums.index(i))
 	except:
 		pass
-	
+  		
   return nums
-
+  
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
@@ -95,7 +96,7 @@ def main():
   print 'remove_adjacent'
   test(remove_adjacent([1, 2, 2, 3]), [1, 2, 3])
   test(remove_adjacent([2, 2, 3, 3, 3]), [2, 3])
-  test(remove_adjacent([]), [])
+  test(remove_adjacent([]),[] )
 
 if __name__ == '__main__':
   main()
