@@ -8,6 +8,10 @@
 # The following lab has modifications over the original google's lab
  
 import sys
+import re
+from fileinput import filename
+
+from scipy.io.matlab.mio5_params import mat_struct
 
 """Baby Names exercise
 
@@ -33,8 +37,18 @@ def extractFemaleNames(filename,letter):
   in alphabetical order.    
   for e.x. ['Amina 70','Anita 100','Aya 61',...]
   """
+  pattern=r'<tr align=\"right\"><td>(\d*)</td><td>(\w*)</td><td>(' +str(letter)+ r'\w*)</td>'
+  html_file = open(filename, 'r')
+  matches=re.findall(pattern,html_file.read())
+  extracted_list=[]
+  for tuple in matches:
+      extracted=str(tuple[2])+str(' ') + str (tuple[0])
+      extracted_list.append(extracted)
+  html_file.close()
+
+
   # +++your code here+++
-  return
+  return sorted(extracted_list)
   
     
 def extractMaleNames(filename,letter):
@@ -44,8 +58,16 @@ def extractMaleNames(filename,letter):
   in reverse alphabetical order.    
   for e.x. ['Muhamed 91', Morgan 57', 'Mahdy 895', ...]
   """
-  # +++your code here+++
-  return
+  pattern = r'<tr align=\"right\"><td>(\d*)</td><td>('+ str(letter)+r'\w*)</td><td>(\w*)</td>'
+  html_file = open(filename, 'r')
+  matches = re.findall(pattern, html_file.read())
+  extracted_list = []
+  for tuple in matches:
+      extracted = str(tuple[1]) + str(' ') + str(tuple[0])
+      extracted_list.append(extracted)
+  html_file.close()
+
+  return sorted(extracted_list,reverse=True)
 
 def extractDocAndPopularityDate(filename):
   """
@@ -56,7 +78,18 @@ def extractDocAndPopularityDate(filename):
   then the extracted string should be is "September 12, 2007 and Popularity in 1990"   
   """
   # +++your code here+++
-  return 
+
+  pattern_popularNames=r'<h1>Popular Names by Birth Year</h1>(\w*\s.*)</td>'
+  pattern_popularity=r'<h3 align=\"center\">(\w*\s.*)</h3>'
+  html_file = open(filename, 'r')
+  content=html_file.read()
+  matches_popularNames = re.findall(pattern_popularNames,content )
+  matches_popularity = re.findall(pattern_popularity, content)
+  html_file.close()
+
+  extractedString=str(matches_popularNames[0]) + ' and ' + str (matches_popularity[0])
+  #print (extractedString)
+  return extractedString
    
 #Provided function to test your solution.  
 def testAll():
@@ -172,8 +205,7 @@ def printUsage():
       
 def main():
   if len(sys.argv) >= 2:
-    if sys.argv[1] == '--testAll' or sys.argv[1] == '--extractDocAndPopularityDate' \
-    or len(sys.argv)==4 : 
+    if sys.argv[1] == '--testAll' or sys.argv[1] == '--extractDocAndPopularityDate' or sys.argv[1] == '--extractFemaleNames' or sys.argv[1] == '--extractMaleNames' :
       option = sys.argv[1]
       try:
         filename = sys.argv[2]
@@ -201,3 +233,5 @@ def main():
 '''
 There is something missing Here :)
 '''
+if __name__ == '__main__':
+	main()
